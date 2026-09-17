@@ -1,0 +1,21 @@
+---
+# Non-secret demo defaults. Override per environment in gitignored files if needed.
+
+demo_name: tenable_nessus_aap_demo
+patch_dry_run: true  # Set false when cloud VMs exist and you are ready to patch
+
+# TODO: Pin KBs that match staged Nessus plugin IDs on golden images
+windows_patch_kb_list:
+  - KB5034129  # EXAMPLE — replace after baseline scan
+
+# Nessus (API calls often run on localhost — see nessus_scan role)
+nessus_url: "https://nessus.example:8834"
+nessus_scan_name_baseline: Demo-Baseline-Windows
+nessus_scan_name_postpatch: Demo-PostPatch-Windows
+
+# ServiceNow PDI — instance name only; password in vault/AAP
+servicenow_instance: dev00000  # TODO: your PDI instance id
+
+# Validation: plugins that must be absent after successful patch
+# TODO: e.g. [123456, 123457]
+nessus_expected_absent_plugin_ids: []

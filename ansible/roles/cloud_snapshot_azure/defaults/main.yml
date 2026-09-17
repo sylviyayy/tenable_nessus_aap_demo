@@ -1,0 +1,4 @@
+---
+# TODO: azure.azcollection.azure_rm_snapshot — store snapshot name/id in hostvars.
+cloud_snapshot_azure:
+  resource_group: demo-rg  # TODO

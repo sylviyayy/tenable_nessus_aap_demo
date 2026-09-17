@@ -1,0 +1,9 @@
+---
+# Workflow step 2 — deterministic pinned KB install (canned demo).
+- name: Patch Windows with pinned updates
+  hosts: aws_windows:azure_windows
+  gather_facts: true
+  tasks:
+    - name: Apply pinned KBs
+      ansible.builtin.include_role:
+        name: windows_patch_pinned

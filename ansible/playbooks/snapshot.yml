@@ -1,0 +1,15 @@
+---
+# Workflow step 1 — EBS / Azure disk snapshots per host.
+- name: Create pre-patch snapshots (AWS + Azure)
+  hosts: aws_windows:azure_windows
+  gather_facts: false
+  tasks:
+    - name: AWS snapshot
+      ansible.builtin.include_role:
+        name: cloud_snapshot_aws
+      when: cloud | default('') == 'aws'
+
+    - name: Azure snapshot
+      ansible.builtin.include_role:
+        name: cloud_snapshot_azure
+      when: cloud | default('') == 'azure'

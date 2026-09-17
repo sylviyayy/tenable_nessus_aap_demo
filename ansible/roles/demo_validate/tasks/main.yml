@@ -1,0 +1,4 @@
+---
+- name: Placeholder — parse Nessus export and fail if expected plugins still present
+  ansible.builtin.debug:
+    msg: "demo_validate TODO — check plugins {{ nessus_expected_absent_plugin_ids }}"

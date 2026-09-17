@@ -1,0 +1,2 @@
+# Optional Python deps for Nessus API helpers (pyTenable) — add when implementing nessus_scan role
+# pytenable

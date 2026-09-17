@@ -1,0 +1,34 @@
+---
+# Full patch lifecycle — matches AAP workflow Demo-Windows-Patch-Lifecycle.
+# Phase 0: syntax-check only. Phase 1+: run against real inventory.
+#
+# Usage:
+#   cd ansible
+#   ansible-playbook playbooks/site.yml --syntax-check
+#   ansible-playbook playbooks/site.yml --tags snapshot,patch  # when ready
+
+- name: Demo — cross-cloud Windows patch lifecycle
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Phase gate — remind operator when dry run is enabled
+      ansible.builtin.debug:
+        msg: >-
+          patch_dry_run={{ patch_dry_run | default(true) }}.
+          Set patch_dry_run false in group_vars when cloud VMs are ready.
+
+- name: Create cloud snapshots before patch
+  ansible.builtin.import_playbook: snapshot.yml
+  tags: [snapshot, lifecycle]
+
+- name: Patch Windows servers (pinned KBs)
+  ansible.builtin.import_playbook: patch_windows.yml
+  tags: [patch, lifecycle]
+
+- name: Nessus post-scan and validation
+  ansible.builtin.import_playbook: nessus_validate.yml
+  tags: [validate, lifecycle]
+
+- name: Update ServiceNow change record
+  ansible.builtin.import_playbook: servicenow_update.yml
+  tags: [itsm, lifecycle]

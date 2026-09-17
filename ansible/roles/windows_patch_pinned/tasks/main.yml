@@ -1,0 +1,15 @@
+---
+- name: Skip real patching when dry run
+  ansible.builtin.debug:
+    msg: "patch_dry_run enabled — skipping win_updates on {{ inventory_hostname }}"
+  when: patch_dry_run | bool
+
+# TODO: ansible.windows.win_updates with reject_list / accept_list from windows_patch_kb_list
+- name: Install pinned Windows updates
+  ansible.windows.win_updates:
+    category_names:
+      - SecurityUpdates
+      - UpdateRollups
+    accept_list: "{{ windows_patch_kb_list }}"
+    reboot: true
+  when: not (patch_dry_run | bool)

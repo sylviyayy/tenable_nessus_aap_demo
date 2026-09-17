@@ -1,0 +1,10 @@
+---
+# Workflow step 4 — close change / attach validation summary.
+- name: Update ServiceNow change
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Update change request
+      ansible.builtin.include_role:
+        name: servicenow_change

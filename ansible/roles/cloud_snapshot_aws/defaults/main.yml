@@ -1,0 +1,4 @@
+---
+# TODO: amazon.aws.ec2_snapshot or create_image — store snapshot id in hostvars for rollback role.
+cloud_snapshot_aws:
+  # snapshot_description: "demo pre-patch {{ ansible_date_time.iso8601 }}"

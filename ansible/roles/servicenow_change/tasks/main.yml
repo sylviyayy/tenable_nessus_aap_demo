@@ -1,0 +1,4 @@
+---
+- name: Placeholder — servicenow.itsm change update with validation summary
+  ansible.builtin.debug:
+    msg: "servicenow_change TODO — instance {{ servicenow_instance }}"

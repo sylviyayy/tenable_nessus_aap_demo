@@ -1,0 +1,3 @@
+---
+nessus_scan_mode: postpatch  # baseline | postpatch
+nessus_export_format: csv

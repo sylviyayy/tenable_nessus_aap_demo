@@ -1,0 +1,11 @@
+---
+# TODO: uri module — session or X-ApiKeys auth per Nessus 10.12 API
+# 1. Resolve scan_id by name
+# 2. POST /scans/{id}/launch
+# 3. Poll until completed
+# 4. POST export, poll, download to artifacts/
+- name: Placeholder — Nessus scan via REST API
+  ansible.builtin.debug:
+    msg: >-
+      nessus_scan TODO mode={{ nessus_scan_mode }}
+      scan={{ nessus_scan_name_postpatch if nessus_scan_mode == 'postpatch' else nessus_scan_name_baseline }}

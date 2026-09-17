@@ -1,0 +1,5 @@
+---
+# TODO: Implement EBS snapshot before patch; register snapshot_id for rollback playbook.
+- name: Placeholder — AWS snapshot (implement in Phase 2)
+  ansible.builtin.debug:
+    msg: "cloud_snapshot_aws TODO for {{ inventory_hostname }}"

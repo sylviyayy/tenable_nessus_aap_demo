@@ -1,0 +1,16 @@
+---
+# Workflow step 3 — launch Nessus scan, export, assert plugin delta.
+- name: Nessus validation (API from control node)
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  tasks:
+    - name: Run post-patch scan and validate
+      ansible.builtin.include_role:
+        name: nessus_scan
+      vars:
+        nessus_scan_mode: postpatch
+
+    - name: Assert expected plugins absent
+      ansible.builtin.include_role:
+        name: demo_validate

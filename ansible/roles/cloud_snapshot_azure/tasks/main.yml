@@ -1,0 +1,4 @@
+---
+- name: Placeholder — Azure disk snapshot (implement in Phase 2)
+  ansible.builtin.debug:
+    msg: "cloud_snapshot_azure TODO for {{ inventory_hostname }}"

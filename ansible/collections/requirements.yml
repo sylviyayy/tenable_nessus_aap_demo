@@ -1,0 +1,8 @@
+---
+# Install: ansible-galaxy collection install -r collections/requirements.yml
+collections:
+  - name: ansible.windows
+  - name: amazon.aws
+  - name: azure.azcollection
+  - name: servicenow.itsm
+  - name: community.general

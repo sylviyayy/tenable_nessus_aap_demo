@@ -1,0 +1,3 @@
+---
+# When patch_dry_run true, skip win_updates (safe local syntax-check path).
+patch_dry_run: true
